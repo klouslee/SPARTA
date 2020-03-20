@@ -6,98 +6,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel = "stylesheet" type = "text/css" href = "style.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh6U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  
 
-  
- <style>
-  .Auction{
-    width: 1200px;
-    margin: 0 auto;
-  }
-  .Auction > div{
-    float:left;
-  }
-  .Productinfo{
-    padding-left:30px;
-    width:600px;
-  }
-  .piclist > img{
-    margin: 5px 5px 5px 35px;
-  }
-  .ProductNum {
-    display:flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start; 
-    width:600px;
-  }
-  .ProductOption {
-    display:flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start; 
-    width:600px;
-  }
-  .list1 > h6{
-    margin: 25px 0 20px 0;
-  }
-  .list2 > h6{
-    margin: 25px 0 43px 0px;
-  }
-  .info >h6{
-    display:flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 25px 0 20px 160px;
-  }
-  .optionselect{
-    margin:10px 10px 10px 230px;
+  <script type="text/javascript">
+    function setpic1() {
+  document.meaw.src = "https://www.poom.co.kr/Upload2/Product/201909/1909191060_detail1.jpg" 
+    }
+    function setpic2() {
+  document.meaw.src = "https://gdimg.gmarket.co.kr/1512762175/still/600?ver=1540866616" 
+    }
+    function setpic3() {
+  document.meaw.src = "https://seoul-p-studio.bunjang.net/product/65965108_1_1502948758_w640.jpg" 
+    }
+    function setpic4() {
+  document.meaw.src = "https://m.banzzak.co.kr/web/product/big/201711/66_shop1_281763.png" 
+    }
+    function setpic5() {
+  document.meaw.src = "https://img.danawa.com/prod_img/500000/741/597/img/7597741_1.jpg?shrink=500:500&_v=20190401154709" 
+    }
+    function addComma(num) {
+    var regexp = /\B(?=(\d{3})+(?!\d))/g;
+    return num.toString().replace(regexp, ',');
+}
+    function totalprize(){   
+      var getstyle = document.getElementById("inputGroupSelect02")
+      var stylecost = getstyle.options[getstyle.selectedIndex].value;
+      var getnum = document.getElementById("inputGroupSelect03")
+      var numcost = getnum.options[getnum.selectedIndex].value;
+      var x= stylecost*numcost;
+      return addComma(x);
+    }
+    function ab(){
+      document.getElementById("asdf").innerHTML = totalprize();
+    }
+    function hide(){
+      $('#lastorder').hide();
+    }
 
-  }
-  .custom-select{
-    margin:10px 10px 10px 10px;
-    width:300px;
-  }
-  .ProductPrize{
-    display:flex;
-    flex-direction: row;
-    margin: 0 10px 0 30px;
-    width:600px;
-  }
-  
-  .money{
-    display:flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-end; 
-    margin-left:340px;
-    float:right;
-    display:inline-flex;
-  }
-</style>
+    function FirstOrder(){
+      let getcat = document.getElementById("inputGroupSelect01")
+      let catstyle = getcat.options[getcat.selectedIndex].value;
+      let getstyle = document.getElementById("inputGroupSelect02")
+      let size = getstyle.options[getstyle.selectedIndex].value;
+      let getnum = document.getElementById("inputGroupSelect03")
+      let quantity = getnum.options[getnum.selectedIndex].value;
+
+      if(catstyle==0){
+        alert("고양이의 종류를 선택하지 않았습니다.")
+        $('#inputGroupSelect01').focus()
+        return
+      }
+      else if(size==0){
+        alert("사이즈를 선택하지 않았습니다.")
+        $('#inputGroupSelect02').focus()
+        return
+      }
+      else if(quantity==0){
+        alert("수량을 선택하지 않았습니다.")
+        $('#inputGroupSelect03').focus()
+        return
+      }
+      else{
+        $('#lastorder').show();
+      }
+
+    }
+
+    function CatChange(){
+      let getcat = document.getElementById("inputGroupSelect01")
+      let catstyle = getcat.options[getcat.selectedIndex].value;
+
+      if(catstyle==1){
+        setpic1()
+      }
+      else if(catstyle==2){
+        setpic2()
+      }
+      else if(catstyle==3){
+        setpic3()
+      }
+      else if(catstyle==4){
+        setpic4()
+      }
+
+    }
+
+    function OrderSet(){
+      let address=$('#Address').val();
+      let phone=$('#Phone').val();
+      let extra=$('#Extra').val();
+
+      if(address==''){
+        alert("전화번호가 미입력되었습니다.")
+        $('#Phone').focus()
+        return;
+        
+      }
+      else if(phone==''){
+        alert('주소가 미입력되었습니다.')
+        $('#Address').focus()
+        return;
+      }
+      else if(extra==''){
+        alert("추가요청사항은 없나요?")
+        $('#Extra').focus()
+        return;
+      }
+    }
+    
+   </script>
 </head>
 
 <body>
   <div class="Auction">
-    <h1>고양이 무드등</h1>
+    <h1>고양이무드등</h1>
     <div>
       <div class="Picture">
         <div class="pic">
             <tr>
-                <td><img src="https://thumbnail.10x10.co.kr/webimage/image/basic600/147/B001474895-3.jpg?cmd=thumb&w=400&h=400&fit=true&ws=false" name="meaw" width=500></td>
+                <td><img src="https://img.danawa.com/prod_img/500000/741/597/img/7597741_1.jpg?shrink=500:500&_v=20190401154709" name="meaw" width=500></td>
             </tr>
         </div>
         <div class="piclist">
-            <img src="https://thumbnail.10x10.co.kr/webimage/image/basic600/147/B001474895-3.jpg?cmd=thumb&w=400&h=400&fit=true&ws=false"  onclick="setpic1()" width=50 >
+            <img src="https://www.poom.co.kr/Upload2/Product/201909/1909191060_detail1.jpg"  onclick="setpic1()" width=50 >
             <img src="https://gdimg.gmarket.co.kr/1512762175/still/600?ver=1540866616" onclick="setpic2()" width=50 >
-            <img src="data:image/jpeg;base64,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" onclick="setpic3()" width=50 >
+            <img src="https://seoul-p-studio.bunjang.net/product/65965108_1_1502948758_w640.jpg" onclick="setpic3()" width=50 >
             <img src="https://m.banzzak.co.kr/web/product/big/201711/66_shop1_281763.png" onclick="setpic4()" width=50 >
-            <img src="https://lh3.googleusercontent.com/proxy/fc2WmEsn6YM8ke9UeGzwFseta8x9qATXm1yBHo-FjNliYeKsGcPHrvBYJ3RX2IsvROYXli-7XXu8ua_wDmmxC_n0_gx3fCf4OmT4Rbrpcp_X3tGd" onclick="setpic5()" width=50 >
+            <img src="https://img.danawa.com/prod_img/500000/741/597/img/7597741_1.jpg?shrink=500:500&_v=20190401154709" onclick="setpic5()" width=50 >
         </div>
       </div>
     </div>
@@ -105,33 +145,35 @@
       <div class="Productinfo">
         <hr style="border: solid 1px black;"></hr>
         <p>Item ID ㅣ 1296894850</p>
-        <div class="ProductNum ">
-          <div class="list1">
+        <hr style="border: solid 1px black; "></hr>
+        <div class="ProductNum">
+          <div class="list1" style="float:left; width:17%;">
             <h6>상품상태</h6>
             <h6>상품위치</h6>
             <h6>판매종료시간</h6>
           </div>
-          <div class="info">
+          <div class="info" style="float:left; width:83%; text-align:right;">
             <h6>건강함</h6>
             <h6>서울 강남구 선릉로93길 40 1층 스파크플러스</h6>
             <h6>12일 14시간 27분 22초 남음</h6>
           </div>
         </div>
+        <hr style="border: solid 1px black; "></hr>
 
-        <hr style="border: solid 1px black;"></hr>
         <div class="ProductOption">
-          <div class="list2">
+          <div class="list2" style="float:left; width:15%;">
             <h6>Style</h6>
             <h6>Size</h6>
             <h6>수량</h6>
           </div>
-          <div class="optionselect">
-            <select class="custom-select option1" id="inputGroupSelect01" onchange="totalprize()";>
+          
+          <div class="optionselect"style="float:left; width:55%;">
+            <select class="custom-select option1" id="inputGroupSelect01" onchange="CatChange()";>
               <option value="0">옵션을 선택하세요.</option>
-              <option value="1">뾰족귀</option>
-              <option value="2">둥글귀</option>
-              <option value="3">웃는상</option>
-              <option value="4">눈감기</option>
+              <option value="1">엉뚱이</option>
+              <option value="2">고양이</option>
+              <option value="3">웃는아이</option>
+              <option value="4">한쪽귀</option>
             </select>
             <select class="custom-select option2" id="inputGroupSelect02" onchange="ab()";>
               <option value="0">옵션을 선택하세요.</option>
@@ -150,59 +192,48 @@
             </select>
           </div>
         </div>
-        <hr style="border: solid 0.25px black;"></hr>
+
       </div>
+      <hr style="border: solid 1px black; width:590px;"></hr>
       <div class="ProductPrize">
         <h3 class="totalP">총 가격 :</h3>
-        <div class="money">
-          <h3 id="asdf">　　　0<h3>
-          <h3>원</h3>
+        <h3 id="asdf">　0</h3>
+        <h3>원</h3>
+      </div>
+    </div>
+    <div id="lastorder" class="FinalOrder">
+      <hr style="border: solid 1px black; width:1135px;"></hr>
+      <div class="OrderPlate">
+        <div class="list3">
+          <h5>전화번호 :</h5>
+          <h5>상세주소 :</h5>
+          <h5>추가요청 :</h5>
         </div>
+        <div class="info2">
+          <input type="text" name="phone_Number" size="20" id="Phone">
+          <input type="text" name="home_Address" size="20"id="Address">
+          <input type="int" name="extra_Requirement" size="20" id="Extra">
+        </div>
+      </div>
+      <div class="FinalButton">
+        <button type="button" class="btn btn-danger" onclick="OrderSet()">최종주문</button>
+      </div>
+    </div>
+      
+    <div class="specific_Info">
+      <div class="explain" style="width:600px">
+        <hr style="border: solid 1px black; width:1135px;"></hr>
+        <h4>이 상품으로 말할 것 같으면 고양이모양 무드등입니다.<br>
+        무드있는 색상으로 귀여움까지 선사합니다.<br>
+        화이트색상에 말랑말랑한 재질<br>
+        만지면 촉감도 좋으며 귀여움까지 담당하고 있는 고양이 무드조명입니다.</h4>
+      </div>
+      <div class="inputorder">
+        <button type="button" class="btn btn-secondary" onclick="FirstOrder()" >장바구니에 담기</button>
+
       </div>
     </div>
     
-    <div class="explain">
-      <hr style="border: solid 0.25px black;"></hr>
-      <h4>이 상품으로 말할 것 같으면 고양이모양 무드등입니다.<br>
-      무드있는 색상으로 귀여움까지 선사합니다.<br>
-      화이트색상에 말랑말랑한 재질<br>
-      만지면 촉감도 좋으며 귀여움까지 담당하고 있는 고양이 무드조명입니다.</h4>    
   </div>
-  </div>
-  <script type="text/javascript">
-    function setpic1() {
-  document.meaw.src = "https://thumbnail.10x10.co.kr/webimage/image/basic600/147/B001474895-3.jpg?cmd=thumb&w=400&h=400&fit=true&ws=false" 
-    }
-    function setpic2() {
-  document.meaw.src = "https://gdimg.gmarket.co.kr/1512762175/still/600?ver=1540866616" 
-    }
-    function setpic3() {
-  document.meaw.src = "data:image/jpeg;base64,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" 
-    }
-    function setpic4() {
-  document.meaw.src = "https://m.banzzak.co.kr/web/product/big/201711/66_shop1_281763.png" 
-    }
-    function setpic5() {
-  document.meaw.src = "https://lh3.googleusercontent.com/proxy/fc2WmEsn6YM8ke9UeGzwFseta8x9qATXm1yBHo-FjNliYeKsGcPHrvBYJ3RX2IsvROYXli-7XXu8ua_wDmmxC_n0_gx3fCf4OmT4Rbrpcp_X3tGd" 
-    }
-    function addComma(num) {
-    var regexp = /\B(?=(\d{3})+(?!\d))/g;
-    return num.toString().replace(regexp, ',');
-}
-    function totalprize(){
-      var x = document.getElementById("asdf");    
-      var getstyle = document.getElementById("inputGroupSelect02")
-      var stylecost = getstyle.options[getstyle.selectedIndex].value;
-      var getnum = document.getElementById("inputGroupSelect03")
-      var numcost = getnum.options[getnum.selectedIndex].value;
-      var x= stylecost*numcost;
-      return addComma(x);
-    }
-    function ab(){
-      document.getElementById("asdf").innerHTML = totalprize();
-      var k = document.getElementsByClassName("money");
-      k.style.float="right";
-    }
-   </script>
+
 </body>
-</head>

@@ -1,0 +1,91 @@
+
+  .Auction{
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .Auction > div{
+    float:left;
+  }
+  .Productinfo{
+    padding-left:30px;
+    width:600px;
+    height: 490px;
+    margin: 0 0 10px 0;
+  }
+  
+  .ProductPrize{
+    margin: 0 10px 0 30px;
+    width:600px;
+  }
+  .piclist {
+    margin-right:50px;
+  }
+  .piclist > img{
+    margin: 5px 5px 5px 35px;
+  }
+  .ProductNum {
+    margin-bottom:215px;
+  }
+  .ProductNum > div > h6 {
+    margin: 25px 0 35px 0;
+  }
+  .ProductOption {
+    width:600px;
+  }
+  .list2 > h6{
+    margin: 25px 0 43px 0px;
+  }
+  .totalP{
+    width:450px;
+  } 
+  .optionselect{
+    margin:10px 10px 10px 170px;
+  }
+  .custom-select{
+    margin:10px 10px 10px 10px;
+    width:300px;
+  }
+  .ProductPrize > h3{
+    float:left;
+    margin: 0 5px 10px 0px;
+  }
+
+  .FinalOrder{
+    display:none;
+  }
+  .OrderPlate{
+    margin: 30px 20px 20px 50px;
+    width:800px
+  }
+  .OrderPlate > div {
+    width:300px;
+    float:left;
+  }
+  .list3 > h5{
+    margin: 13px 0px 27px 50px;
+  }
+  .info2 > input{
+    margin: 10px 20px 10px 0px;
+    width:200px;
+  }
+  .btn-danger{
+    width:300px;
+    height: 150px;
+    margin-left:50px;
+    font-size:40px;
+  }
+
+  .specific_Info > div{
+    float:left;
+  }
+  .inputorder{
+    width:400px;
+    height: 100px;
+    margin: 50px 30px 50px 150px;
+    align-content: center;
+  }
+  .btn-secondary{
+    width:200px;
+    height: 80px;
+    font-size:20px;
+  }
